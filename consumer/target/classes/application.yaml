@@ -1,0 +1,15 @@
+# Configuración de Kafka para el consumidor
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest # Restablece automáticamente el desplazamiento al valor más temprano si no hay un desplazamiento almacenado para el grupo de consumidores
+      bootstrap-servers: localhost:29092 # Dirección de los servidores de arranque de Kafka
+      group-id: 1 # ID del grupo de consumidores al que pertenece este consumidor
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer # Deserializador de claves para el consumidor
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer # Deserializador de valores para el consumidor
+      properties:
+        spring.json.trusted.packages: com.aruizKafka.consumer # Paquetes de confianza para la deserialización JSON en Kafka
+
+# Configuración del servidor
+server:
+  port: 8070 # Puerto en el que se ejecutará el servidor
